@@ -15,6 +15,16 @@ services:
     ports:
       - ${DB_PORT}:3306
     container_name: db-server
+  api-mockup:
+    build:
+      context: ./api-mockup
+      dockerfile: Dockerfile
+    volumes:
+      - ./api-mockup/app:/app
+    ports:
+      - ${API_PORT}:80
+    container_name: api-mockup
+    tty: true
 
 volumes:
   db-store:
